@@ -59,8 +59,9 @@ class MyopiaFundusPredDataset(Dataset):
         self.root_data = pd.read_csv(label_dir)
         self.origin_labels = self.root_data['myopic_label'].to_list()
         self.labels = self.origin_labels
-        for idx, label in enumerate(self.root_data['myopic_label'].to_list()):
-            self.labels[idx] = 1 if label>2 else 0
+        # binary classification experiments
+        # for idx, label in enumerate(self.root_data['myopic_label'].to_list()):
+        #     self.labels[idx] = 1 if label>2 else 0
         self.imgs_dir = self.root_data['img_dir'].to_list()
         self.transform = transform
 
