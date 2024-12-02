@@ -99,7 +99,7 @@ class SimCLR(pl.LightningModule):
         self.info_nce_loss(batch, mode="val")
 
 if __name__ == "__main__":
-    img_path = '/data/mengxian/processed_data/002_Myopia_TibetChildren/images/'
+    img_path = '/example'
     base_transform = ContrastiveTransformations(contrast_transforms)
     dataset = ImageFolder(img_path, transform=base_transform)
     pl.seed_everything(42)

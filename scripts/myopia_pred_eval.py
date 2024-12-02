@@ -21,7 +21,7 @@ def eval_resnet(model,
                 test_dataloader,
                 gpus=[0,1,2,3] if torch.cuda.is_available() else None, 
                 **kwargs):
-    EVAL_PATH = '/home/mengxian/002_TibetMyopia/eval'
+    EVAL_PATH = '/example'
     trainer = pl.Trainer(default_root_dir=os.path.join(EVAL_PATH, "ResNetPred"),
                          devices=gpus
     )
@@ -31,10 +31,10 @@ def eval_resnet(model,
 if __name__ == "__main__":
     gpus = [1] if torch.cuda.is_available() else None
     # define model
-    ckpt_path = '/home/mengxian/002_TibetMyopia/ckpts/ResNetPred/lightning_logs/version_1/checkpoints/epoch=19-step=1680.ckpt'
+    ckpt_path = '/example'
     model = ResNet34Encoder.load_from_checkpoint(ckpt_path)
     # define dataset
-    test_data_root_path = '/data/mengxian/processed_data/002_Myopia_TibetChildren/labels/classification_label/testset.csv'
+    test_data_root_path = '/example'
     test_dataset = MyopiaFundusPredDataset(label_dir=test_data_root_path)
     # avoid distributed sampling, define sampler, dataloader before DDP
     test_loader = GetDataLoader(test_dataset, 

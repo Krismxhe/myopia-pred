@@ -16,7 +16,7 @@ from simclr import SimCLR, ContrastiveTransformations
 import os
 
 def train_simclr(batch_size=256, max_epochs=500, gpus=[0, 1, 2, 3] if torch.cuda.is_available() else None, **kwargs):
-    CHECKPOINT_PATH = '/home/mengxian/002_TibetMyopia/ckpts'
+    CHECKPOINT_PATH = '/example'
     if os.path.exists(CHECKPOINT_PATH)==False:
         os.mkdir(CHECKPOINT_PATH)
     trainer = pl.Trainer(
@@ -39,7 +39,7 @@ def train_simclr(batch_size=256, max_epochs=500, gpus=[0, 1, 2, 3] if torch.cuda
         model = SimCLR.load_from_checkpoint(pretrained_filename)
     else:
         NUM_WORKERS = os.cpu_count()
-        path = '/data/mengxian/processed_data/002_Myopia_TibetChildren/images/'
+        path = '/example'
         dataset = ImageFolder(root=path, transform=ContrastiveTransformations())
         dataset.imgs = [(path, 0) for path, _ in dataset.imgs]
         dataset_size = len(dataset)

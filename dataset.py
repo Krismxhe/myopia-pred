@@ -19,7 +19,7 @@ import numpy as np
 class MyopiaFundusDataset(Dataset):
     def __init__(self, file_dir, transform=transforms.ToTensor(), is_train=True):
         """
-        label dir: "/data/mengxian/processed_data/002_Myopia_TibetChildren/labels/all_year_no_null_separated"
+        label dir: "/example"
             stores json file: contains images dir, metadata
         """
         self.file_dir = file_dir
@@ -98,7 +98,7 @@ if __name__ == "__main__":
         ]
     )
     transform = aug4cls(input_size=(256, 256))
-    path = "/data/mengxian/processed_data/002_Myopia_TibetChildren/labels/classification_label/myopia_19_23_cls.csv"
+    path = "/example"
     NUM_WORKERS = os.cpu_count()
     print(f"cpu core number = {NUM_WORKERS}")
     dataset = MyopiaFundusPredDataset(label_dir=path, transform=transform)

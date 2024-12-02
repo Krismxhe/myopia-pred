@@ -24,7 +24,7 @@ def train_resnet(model,
                  gpus=[0,1,2,3] if torch.cuda.is_available() else None, 
                  **kwargs):
 
-    CHECKPOINT_PATH = '/home/mengxian/002_TibetMyopia/ckpts'
+    CHECKPOINT_PATH = '/example'
     if os.path.exists(CHECKPOINT_PATH)==False:
         os.mkdir(CHECKPOINT_PATH)
 
@@ -67,7 +67,7 @@ if __name__ == "__main__":
     LR = 1e-3
     WEIGHT_DECAY = 5e-4
     # define model
-    ckpt_path = '/home/mengxian/002_TibetMyopia/ckpts/SimCLR/lightning_logs/version_0/checkpoints/epoch=474-step=4750.ckpt'
+    ckpt_path = '/example'
     model = ResNet34Encoder(num_classes=NUM_CLASSES, 
                             ckpt_path=ckpt_path,
                             optim='sgd',
@@ -76,8 +76,8 @@ if __name__ == "__main__":
                             max_epochs=MAX_EPOCHS,
                             load_params=True)
     # define dataset
-    train_data_root_path = "/data/mengxian/processed_data/002_Myopia_TibetChildren/labels/classification_label/trainset.csv"
-    val_data_root_path = '/data/mengxian/processed_data/002_Myopia_TibetChildren/labels/classification_label/valset.csv'
+    train_data_root_path = "/example"
+    val_data_root_path = '/example'
     ## define transformation
     input_size = (256, 256)
     transform = aug4cls(input_size=input_size)

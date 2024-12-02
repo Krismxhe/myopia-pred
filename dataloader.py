@@ -58,7 +58,7 @@ if __name__ == "__main__":
     NUM_WORKERS = int(os.cpu_count() / 2)
     BATCH_SIZE = 256
     # define dataset
-    train_data_root_path = "/data/mengxian/processed_data/002_Myopia_TibetChildren/labels/classification_label/trainset.csv"
+    train_data_root_path = "/example"
     ## define transformation
     input_size = (256, 256)
     transform = aug4cls(input_size=input_size)
